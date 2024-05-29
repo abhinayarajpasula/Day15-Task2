@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    body {
+    background-color: #f8f9fa;
+    margin: 20px;
+}
+
+    .card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn {
+        width: 60px;
+        height: 60px;
+        font-size: 1.2rem;
+    }
+
+    #display {
+        height: 60px;
+        font-size: 2rem;
+        text-align: right;
+    }
+
+    #title {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    #description {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .table-responsive {
+        margin-bottom: 20px;
+    }
+
+</style>
+<body>
+    <script src="calculator.js"></script>
+    <!-- Test Suite: Include this inside the body of the index.html -->
+    <script>
+        (function() {
+            const testCases = [
+                { input: '1+2=', expected: '3' },
+                { input: '2*3=', expected: '6' },
+                { input: '5-3=', expected: '2' },
+                { input: '8/2=', expected: '4' },
+                { input: '9%2=', expected: '1' }
+            ];
+
+            testCases.forEach(testCase => {
+                const display = document.getElementById('display');
+                display.value = '';
+                testCase.input.split('').forEach(char => handleButtonClick(char));
+                const result = display.value === testCase.expected;
+                console.log(`Test ${testCase.input}: ${result ? 'Passed' : 'Failed'} (Expected ${testCase.expected}, got ${display.value})`);
+            });
+        })();
+    </script>
+    <script src="https://app.zenclass.in/sheets/v1/js/zen/suite/bundle.js"></script>
+</body>
+</html>
